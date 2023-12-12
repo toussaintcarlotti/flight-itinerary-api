@@ -13,7 +13,7 @@ class AirportsImportCommand extends Command
 
     public function handle()
     {
-        $file = \File::get(base_path('/airports.json'));
+        $file = \File::get(base_path('/public/jsonData/airports.json'));
         Airport::truncate();
         Airport::insert(json_decode($file, true, 512, JSON_THROW_ON_ERROR));
 

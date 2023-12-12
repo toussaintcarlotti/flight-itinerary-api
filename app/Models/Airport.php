@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Airport extends Model
 {
@@ -28,4 +29,17 @@ class Airport extends Model
         'direct_flights',
         'carriers',
     ];
+
+    /******************************
+     *** RELATIONSHIPS
+     ******************************/
+    public function departures(): HasMany
+    {
+        return $this->hasMany(Flight::class, 'estDepartureAirport', 'icao');
+    }
+
+    public function arrivals(): HasMany
+    {
+        return $this->hasMany(Flight::class, 'estArrivalAirport', 'icao');
+    }
 }
