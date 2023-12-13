@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\AirportController;
+use App\Http\Controllers\FlightArrivalController;
 use App\Http\Controllers\FlightController;
+use App\Http\Controllers\FlightDepartureController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,4 +24,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::resource('airports', AirportController::class);
 Route::resource('flights', FlightController::class);
+
+Route::get('/flights/departure/{airport}/{begin}/{end}', FlightDepartureController::class);
+Route::get('/flights/arrival/{airport}/{begin}/{end}', FlightArrivalController::class);
+Route::get('/flights/departure-arrival/{departure}/{arrival}/{begin}/{end}', FlightArrivalController::class);
 
