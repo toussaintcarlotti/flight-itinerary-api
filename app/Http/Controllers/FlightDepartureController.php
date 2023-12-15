@@ -8,11 +8,11 @@ use Carbon\Carbon;
 
 class FlightDepartureController extends Controller
 {
-    public function __invoke(string $airport, string $departure, string $arrival)
+    public function __invoke(string $airport, string $begin, string $end)
     {
         $flights = Flight::where('estDepartureAirport', $airport)
-            ->where('firstSeen', '>=', $departure)
-            ->where('lastSeen', '<=', $arrival)
+            ->where('firstSeen', '>=', $begin)
+            ->where('lastSeen', '<=', $end)
             ->get();
 
         return FlightResource::collection($flights);
