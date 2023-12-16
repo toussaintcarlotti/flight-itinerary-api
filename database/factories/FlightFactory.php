@@ -18,7 +18,7 @@ class FlightFactory extends Factory
         $startDate = now()->timestamp + $this->faker->numberBetween(-31556926, 31556926);
 
         return [
-            'icao24' => $this->faker->word(),
+            'icao24' => $this->faker->uuid(),
             'firstSeen' => $startDate,
             'estDepartureAirport' => $this->faker->randomElement($aiports),
             'lastSeen' => $startDate + $this->faker->numberBetween(3600, 100400),
