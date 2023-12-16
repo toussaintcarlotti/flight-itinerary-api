@@ -12,7 +12,7 @@ class FlightByAircraftController extends Controller
         $flight = Flight::where('icao24', $icao24)->firstOrFail();
         $flights = Flight::where('estDepartureAirport', $flight->estDepartureAirport)
             ->where('firstSeen', '>=', $begin)
-            ->where('lastSeen', '<=', $end)
+            ->where('firstSeen', '<=', $end)
             ->get();
 
         return FlightResource::collection($flights);
