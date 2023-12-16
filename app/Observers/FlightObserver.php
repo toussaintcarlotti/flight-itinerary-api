@@ -4,7 +4,6 @@ namespace App\Observers;
 
 use App\Models\Airport;
 use App\Models\Flight;
-use Illuminate\Support\Carbon;
 
 class FlightObserver
 {
@@ -18,6 +17,11 @@ class FlightObserver
             'endTime' => $flight->lastSeen,
             'path' => $this->calculatePath($flight->departureAirport, $flight->arrivalAirport, $flight->firstSeen, $flight->lastSeen)
         ]);
+    }
+
+    public function deleted(Flight $flight)
+    {
+        $flight->track()->delete();
     }
 
     private function calculatePath(Airport $departureAirport, Airport $arrivalAirport, $startTime, $endTime): array
