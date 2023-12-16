@@ -37,4 +37,9 @@ class Flight extends Model
     {
         return $this->belongsTo(Airport::class, 'estArrivalAirport', 'icao');
     }
+
+    public function track(): BelongsTo
+    {
+        return $this->belongsTo(Track::class);
+    }
 }

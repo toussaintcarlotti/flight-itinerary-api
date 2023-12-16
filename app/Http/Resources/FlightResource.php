@@ -26,6 +26,8 @@ class FlightResource extends JsonResource
             'arrivalAirportCandidatesCount' => $this->arrivalAirportCandidatesCount,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+            'departureAirportCity' => $this->departureAirport->city,
+            'arrivalAirportCity' => $this->arrivalAirport->city,
         ];
     }
 }

@@ -5,6 +5,7 @@ use App\Http\Controllers\FlightArrivalController;
 use App\Http\Controllers\FlightController;
 use App\Http\Controllers\FlightDepartureArrivalController;
 use App\Http\Controllers\FlightDepartureController;
+use App\Http\Controllers\TrackByAircraftController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,10 +24,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('airports', AirportController::class);
-Route::resource('flights', FlightController::class);
+Route::get('airports', [AirportController::class, 'index']);
+Route::get('flights', [FlightController::class, 'index']);
 
 Route::get('/flights/departure/{airport}/{begin}/{end}', FlightDepartureController::class);
 Route::get('/flights/arrival/{airport}/{begin}/{end}', FlightArrivalController::class);
 Route::get('/flights/departure-arrival/{departure}/{arrival}/{begin}/{end}', FlightDepartureArrivalController::class);
+
+Route::get('/tracks/{icao24}/{time}', TrackByAircraftController::class);
 

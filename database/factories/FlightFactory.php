@@ -16,6 +16,7 @@ class FlightFactory extends Factory
         $aiports = Airport::all()->pluck('icao')->toArray();
 
         $startDate = now()->timestamp + $this->faker->numberBetween(-31556926, 31556926);
+
         return [
             'icao24' => $this->faker->word(),
             'firstSeen' => $startDate,
