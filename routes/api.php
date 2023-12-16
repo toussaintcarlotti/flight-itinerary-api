@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AirportController;
 use App\Http\Controllers\FlightArrivalController;
+use App\Http\Controllers\FlightByAircraftController;
 use App\Http\Controllers\FlightController;
 use App\Http\Controllers\FlightDepartureArrivalController;
 use App\Http\Controllers\FlightDepartureController;
