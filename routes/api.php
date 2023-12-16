@@ -31,5 +31,7 @@ Route::get('/flights/departure/{airport}/{begin}/{end}', FlightDepartureControll
 Route::get('/flights/arrival/{airport}/{begin}/{end}', FlightArrivalController::class);
 Route::get('/flights/departure-arrival/{departure}/{arrival}/{begin}/{end}', FlightDepartureArrivalController::class);
 
+Route::get('flights/aircraft/{icao24}/{begin}/{end}', [FlightByAircraftController::class, 'index']);
+
 Route::get('/tracks/{icao24}/{time}', TrackByAircraftController::class);
 
